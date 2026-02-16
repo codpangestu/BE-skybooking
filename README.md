@@ -147,27 +147,60 @@ Laravel REST API + MySQL + Filament PHP • Last Updated: February 2026
 
 ---
 
+## 🛠️ Prerequisites
+
+Sebelum memulai, pastikan Anda telah menginstal berikut ini di komputer Anda:
+*   **PHP 8.2+**
+*   **Composer** (Dependency Manager for PHP)
+*   **MySQL** atau **PostgreSQL** (Database Server)
+*   **Node.js & NPM** (Untuk mengelola aset frontend/filament)
+*   **Git**
+
+---
+
 ## 🚀 Installation & Setup
 
-1. **Clone & Install**:
-   ```bash
-   git clone <repo-url>
-   composer install
-   ```
+Ikuti langkah-langkah berikut untuk menjalankan project ini di komputer lokal Anda:
 
-2. **Environment**:
-   Salin `.env.example` menjadi `.env` dan atur konfigurasi database Anda.
+### 1. Clone Repository
+```bash
+git clone https://github.com/codpangestu/BE-skybooking.git
+cd BE-skybooking
+```
 
-3. **Database Setup**:
-   ```bash
-   php artisan key:generate
-   php artisan migrate --seed
-   ```
+### 2. Install Dependencies
+```bash
+composer install
+npm install
+```
 
-4. **Run Server**:
-   ```bash
-   php artisan serve
-   ```
+### 3. Environment Configuration
+Salin file `.env.example` menjadi `.env` dan sesuaikan pengaturan database Anda:
+```bash
+cp .env.example .env
+```
+*Pastikan bagian `DB_DATABASE`, `DB_USERNAME`, dan `DB_PASSWORD` sudah sesuai dengan MySQL lokal Anda.*
+
+### 4. Setup Project
+Jalankan rangkaian perintah berikut untuk menginisialisasi aplikasi:
+```bash
+php artisan key:generate
+php artisan jwt:secret      # Jika menggunakan JWT
+php artisan migrate --seed  # Untuk membuat tabel dan data awal
+php artisan storage:link    # Untuk akses file upload (thumbnail maskapai, dll)
+```
+
+### 5. Compile Assets (Opsional - Untuk Filament)
+Jika Anda melakukan perubahan pada tampilan admin dan anda menggunakan filament untuk dashboard admin:
+```bash
+npm run build
+```
+
+### 6. Run Application
+```bash
+php artisan serve
+```
+Aplikasi sekarang dapat diakses di: `http://localhost:8000`
 
 ---
 
@@ -175,3 +208,6 @@ Laravel REST API + MySQL + Filament PHP • Last Updated: February 2026
 **Akbar Pangestu**
 Fullstack Developer
 *"Designing secure and scalable REST APIs with Laravel."*
+
+> [!NOTE]
+> Link ERD: [Diagrams.net](https://app.diagrams.net/)
